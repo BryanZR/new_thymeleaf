@@ -14,15 +14,20 @@ public class success {
 
     @ResponseBody
     @RequestMapping("hello")
-    public String  hello(){
+    public String hello() {
         return "你好！！！";
     }
+
     @RequestMapping("success")
-    public  String success(Map<String,Object> map) {
-        map.put("hello", "<h1>我是你你爹</h1>");
-        map.put("user", Arrays.asList("zhngsan","lisi","wangwyu"));
+    public String success(Map<String, Object> map) {
+        map.put("hello", "<h1>疾风剑豪</h1>");
+        map.put("user", Arrays.asList("zhngsan", "lisi", "wangwyu"));
         return "success";
 
     }
+  /*  @RequestMapping({"/","/index"})
+    public String index() {
+        return "index";
+    }*/
 
 }
