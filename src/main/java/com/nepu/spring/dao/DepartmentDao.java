@@ -14,7 +14,6 @@ public class DepartmentDao {
 	
 	static{
 		departments = new HashMap<Integer, Department>();
-		
 		departments.put(101, new Department(101, "D-AA"));
 		departments.put(102, new Department(102, "D-BB"));
 		departments.put(103, new Department(103, "D-CC"));
