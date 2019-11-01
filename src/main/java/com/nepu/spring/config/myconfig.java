@@ -29,7 +29,7 @@ public class myconfig implements WebMvcConfigurer {
                 //SpringBoot已经做好了静态资源映射
 
                 registry.addInterceptor( new loginHandlerInterceotor()).addPathPatterns("/**").
-                        excludePathPatterns("/index.html","/","/user/login","/asserts/**");
+                        excludePathPatterns("/index.html","/","/user/login","/asserts/**","emp/add");
             }
 
             @Override
