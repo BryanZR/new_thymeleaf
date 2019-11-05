@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -44,17 +45,29 @@ public class EmployeeController {
     }
 
 
-
-//员工添加功能
+    //员工添加功能
     @PostMapping("/emp")
     public String addemp(Employee employee) {
 //        springmvc自动请求参数和入参对象的属性一一绑定,请求参数的名字和javabean的入参的对象的属性一致
         //添加完成之后直接回到list页面
-        System.out.println("保存的信息是: "+employee);
+        System.out.println("保存的信息是: " + employee);
         employeeDao.save(employee);
         //    redirect表示重定向到一个地址(请求) /代表当前项目路径
         //    forward 表示转发到一个地址
         return "redirect:/emps";
+    }
+
+    //    来到修改页面查出当前然后再页面回显
+    @GetMapping("/emp/{id}")
+    public String editemp(@PathVariable("id") Integer id, Model model) {
+        Employee employee = employeeDao.get(id);
+        model.addAttribute("emp", employee);
+        System.out.println("emoloyee的内容是"+employee);
+//查出部门名称
+        Collection<Department> departments = departmentdao.getDepartments();
+        model.addAttribute("depts", departments);
+        //修改添加二合一
+        return "emp/add";
     }
 
 }
